@@ -8,6 +8,7 @@ import moment from 'moment';
 import 'moment/locale/zh-cn';
 moment.locale('zh-cn');
 import { Switch ,Button} from 'antd';
+import NProgress from "nprogress";
 export default class index extends React.Component {
     constructor(props) {
         super(props);
@@ -51,6 +52,7 @@ export default class index extends React.Component {
     }
     getResponse =async ()=>{
        // console.log(this.state.timeStamp)
+        NProgress.start()
       await  this.setState({showArr:[]})
        let {data} = await reqGetResponse(this.state.timeStamp)
         await this.setState({list:data})
@@ -58,6 +60,7 @@ export default class index extends React.Component {
        // data=data.substring(0,500)
         this.subString(data)
         await this.setState({spinning:false})
+        NProgress.done()
     }
 
     subString=async (str)=>{

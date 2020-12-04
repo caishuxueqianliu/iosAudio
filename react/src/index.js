@@ -8,6 +8,9 @@ import 'moment/locale/zh-cn';
 moment.locale('zh-cn');
 React.Component.prototype.$md5 = md5
 React.Component.prototype.$moment = moment
+
+import 'nprogress/nprogress.css' // Progress 进度条样式
+
 // antd-ui
 import "antd/dist/antd.css";
 ReactDOM.render(

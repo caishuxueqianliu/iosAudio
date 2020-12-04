@@ -7,6 +7,7 @@ import { UploadOutlined } from '@ant-design/icons';
 import {reqGetCookie, reqGetList, reqPostLogin,reqUpdate} from '../../api/iosaudit'
 import '../request/xlsx.js'
 import XLSX from 'xlsx'
+import NProgress from 'nprogress' // Progress 进度条
 export default class Index  extends React.Component{
     constructor(props) {
         super(props)
@@ -175,7 +176,7 @@ export default class Index  extends React.Component{
         await reqPostLogin(formData)
     }
     click2= async ()=>{
-      //  console.log(2)
+        NProgress.start();
       const {data} =  await  reqGetList()
         this.setState({list:data})
         let ListArr=[]
@@ -189,6 +190,7 @@ export default class Index  extends React.Component{
          this.setState({params:ListArr})
         this.setState({apis:apisArr})
         this.setState({loading:false})
+        NProgress.done();
     }
     formatJson=(string) =>{
        //  let string1 = JSON.parse(string);//将json字符串格式化为json对象

@@ -12,6 +12,7 @@ import './index.less'
 // import Config from './components/config'
 import {reqPostInfo,reqGetSeverList,reqPostRegister,reqPostLogin} from '../../api/request'
 import crypt from '../xgcrypt/crypt'
+import NProgress from "nprogress";
 
 export default class index extends React.Component {
 
@@ -137,6 +138,7 @@ export default class index extends React.Component {
        //   console.log(c)
         }
         setTimeout(async ()=>{
+            NProgress.start()
             await this.setState({confc:c})
             await this.setState({confk:Object.keys(c)})
             await this.setState({confv:Object.values(c)})
@@ -151,6 +153,7 @@ export default class index extends React.Component {
            // await this.config()
             this.setState({isdisabled:false})
             await  this.reqInfo()
+            NProgress.done()
         },500)
 
        // setTimeout(()=>{this.setState({confk:k}),this.setState({confv:v}),this.setState({conf:c})}, 500)

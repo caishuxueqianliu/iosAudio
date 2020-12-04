@@ -1,6 +1,7 @@
 import React from 'react'
 import "./index.less"
 import { Table } from 'antd';
+import NProgress from 'nprogress' // Progress 进度条
 // import { reqGetCookie, reqPostLogin, reqPostRecord } from '../../api/iosaudit'
 import { reqPostRecord } from '../../api/iosaudit'
 import { Input } from 'antd';
@@ -29,6 +30,7 @@ export default class Index  extends React.Component{
     //
     // }
     click2= async ()=>{
+        NProgress.start()
         let list=[]
         let formData = new FormData()
         formData.append('search',this.state.search)
@@ -45,6 +47,7 @@ export default class Index  extends React.Component{
         }
         this.setState({list:list})
         this.setState({loading:false})
+        NProgress.done()
     }
 
    componentDidMount() {

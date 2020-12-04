@@ -9,6 +9,7 @@ const { Panel } = Collapse;
 import { Select } from 'antd';
 const { Option } = Select;
 import { reqUpload, reqGetList } from "../../api/api"
+import NProgress from "nprogress";
 
 export default class index extends React.Component {
     constructor(props) {
@@ -33,9 +34,11 @@ export default class index extends React.Component {
       await  this.refs.Refbtn1.click()
     }
     getList =async()=>{
+        NProgress.start()
         const {data}= await reqGetList()
       //  console.log(data.data)
       this.setState({arr:data.data.reverse()})
+        NProgress.done()
     }
 
     callback=(key)=> {
