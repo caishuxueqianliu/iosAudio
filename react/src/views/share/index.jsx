@@ -47,7 +47,7 @@ export default class index extends React.Component {
            <div onClick={event => {
                event.stopPropagation()
                //console.log(name)
-               window.location.href="/api1/upload/"+_id+extname
+               window.location.href="http://106.14.40.150:3333/upload/"+_id+extname
            }} >
            <span style={{marginRight:20}}>{filename}</span>
            <VerticalAlignBottomOutlined/>

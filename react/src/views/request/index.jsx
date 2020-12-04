@@ -167,12 +167,13 @@ export default class index extends React.Component {
     copy=()=>{
 
     }
-    next = async() => {
+    next = () => {
         if(this.state.current==0){
-            await this.reqGetServer()
+
+             this.reqGetServer()
         }
         else if(this.state.current==1){
-            await this.reqRegister()
+             this.reqRegister()
         }
         this.steps= [
             {
@@ -273,11 +274,18 @@ export default class index extends React.Component {
             let loginUrl="http://"+this.state.info.dex.l+"/user/login";
      await   reqPostRegister(registerUrl,loginreq).then(data=>{
             this.setState({login: {ret:data.data.ret,url:loginUrl}})
-        })
+        }).catch(()=>{
+       return
+         }
+     )
 
         await    reqPostLogin(loginUrl,registerreq).then(data=>{
                 this.setState({register:{ret:data.data.ret,url:registerUrl}})
-            })
+            }).catch(()=>{
+                return
+          //  this.setState({register:{ret:data.data.ret,url:registerUrl}})
+            }
+        )
 
 
 

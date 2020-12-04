@@ -146,6 +146,10 @@ export default class Index  extends React.Component{
            message.success('上传成功')
             this.click2()
            this.setState({id:''})
+       }).catch(()=>{
+           message.success('上传成功')
+           this.click2()
+           this.setState({id:''})
        })
 
     }
